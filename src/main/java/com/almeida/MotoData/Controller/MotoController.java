@@ -29,5 +29,24 @@ public class MotoController {
         return ResponseEntity.ok(service.getAllMotos());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Moto> GetMotoById(@PathVariable Long id)
+    {
+        return ResponseEntity.ok(service.getMotoById(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> DeleMotoById(@PathVariable Long id)
+    {
+        service.deleteMotoById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Moto> update(@PathVariable Long id, @RequestBody Moto moto)
+    {
+        return ResponseEntity.ok(service.update(id, moto));
+    }
+
 
 }
